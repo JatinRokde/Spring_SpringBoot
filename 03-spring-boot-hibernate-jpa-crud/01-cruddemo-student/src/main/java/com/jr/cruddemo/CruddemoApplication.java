@@ -19,8 +19,23 @@ public class CruddemoApplication {
 	// It is executed after the Spring Beans have been loaded
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			createStudent(studentDAO);
+			// createStudent(studentDAO);
+			createMultipleStudent(studentDAO);
 		};
+	}
+
+	private void createMultipleStudent(StudentDAO studentDAO) {
+		// create multiple student objects
+		System.out.println("Creating 3 new Student object... ");
+		Student tempStudent1 = new Student("Madhur", "Tyagi", "madhur.tyagi@cuchd.in");
+		Student tempStudent2 = new Student("Vishal", "Singh", "vishal.singh@cuchd.in");
+		Student tempStudent3 = new Student("Kush", "Bhasin", "kush.bhasin@cuchd.in");
+
+		// saving the students
+		System.out.println("Saving the Students... ");
+		studentDAO.save(tempStudent1);
+		studentDAO.save(tempStudent2);
+		studentDAO.save(tempStudent3);
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
