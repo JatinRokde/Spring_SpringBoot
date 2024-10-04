@@ -2,6 +2,6 @@ package com.jr.cruddemo.dao;
 
 import com.jr.cruddemo.entity.Instructor;
 
-public interface AppDao {
+public interface AppDAO {
     void save (Instructor theInstructor);
 }
