@@ -28,9 +28,23 @@ public class CruddemoApplication {
 			//deleteInstructorDetail(appDAO);
 			//createInstructorWithCourses(appDAO);
 			//findInstructorWithCourses(appDAO);
+			//findCoursesForInstructor(appDAO);
 
-			findCoursesForInstructor(appDAO);
+			findInstructorWithCoursesJoinFetch(appDAO);
 		};
+	}
+
+	private void findInstructorWithCoursesJoinFetch(AppDAO appDAO) {
+		int theId = 1;
+
+		// find the instructor
+		System.out.println("Finding Instructor with ID: " + theId);
+		Instructor tempInstructor = appDAO.findInstructorByIdJoinFetch(theId);
+
+		System.out.println("Instructor: " + tempInstructor);
+		System.out.println("The associated Courses: " + tempInstructor.getCourses());
+
+		System.out.println("DONE!");
 	}
 
 	private void findCoursesForInstructor(AppDAO appDAO) {
