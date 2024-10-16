@@ -32,9 +32,19 @@ public class CruddemoApplication {
 			//findInstructorWithCoursesJoinFetch(appDAO);
 			//updateInstructor(appDAO);
 			//updateCourse(appDAO);
+			//deleteInstructor(appDAO);
 
-			deleteInstructor(appDAO);
+			deleteCourse(appDAO);
 		};
+	}
+
+	private void deleteCourse(AppDAO appDAO) {
+		int theId = 10;
+
+		System.out.println("Deleting the Course with ID: " + theId);
+		appDAO.deleteCourseById(theId);
+
+		System.out.println("DELETED!");
 	}
 
 	private void updateCourse(AppDAO appDAO) {
