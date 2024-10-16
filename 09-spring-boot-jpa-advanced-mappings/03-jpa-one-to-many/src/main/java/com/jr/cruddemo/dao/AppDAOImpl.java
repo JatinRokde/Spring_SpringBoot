@@ -77,7 +77,7 @@ public class AppDAOImpl implements AppDAO {
     @Override
     public Instructor findInstructorByIdJoinFetch(int theId) {
         // create query
-        TypedQuery<Instructor> query = entityManager.createQuery("SELECT i FROM Instructor i JOIN FETCH i.courses WHERE i.id = :data", Instructor.class);
+        TypedQuery<Instructor> query = entityManager.createQuery("SELECT i FROM Instructor i JOIN FETCH i.courses JOIN FETCH i.instructorDetail WHERE i.id = :data", Instructor.class);
         query.setParameter("data", theId);
 
         // execute the query
