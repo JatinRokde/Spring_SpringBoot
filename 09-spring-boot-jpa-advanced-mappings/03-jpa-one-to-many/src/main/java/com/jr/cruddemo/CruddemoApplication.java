@@ -30,9 +30,26 @@ public class CruddemoApplication {
 			//findInstructorWithCourses(appDAO);
 			//findCoursesForInstructor(appDAO);
 			//findInstructorWithCoursesJoinFetch(appDAO);
+			//updateInstructor(appDAO);
 
-			updateInstructor(appDAO);
+			updateCourse(appDAO);
 		};
+	}
+
+	private void updateCourse(AppDAO appDAO) {
+		int theId = 10;
+
+		// find the course
+		System.out.println("Finding Course ID: " + theId);
+		Course tempCourse = appDAO.findCourseById(theId);
+
+		// update the course
+		System.out.println("Updating Course with ID: " + theId);
+		tempCourse.setTitle("Machine Learning BootCamp");
+
+		appDAO.update(tempCourse);
+
+		System.out.println("DONE!");
 	}
 
 	private void updateInstructor(AppDAO appDAO) {
