@@ -22,9 +22,29 @@ public class CruddemoApplication {
 		return runner -> {
 			//createCourseAndStudents(appDAO);
 			//findCourseAndStudents(appDAO);
-
-			findStudentAndCourses(appDAO);
+			//findStudentAndCourses(appDAO);
+			
+			addMoreCoursesForStudent(appDAO);
 		};
+	}
+
+	private void addMoreCoursesForStudent(AppDAO appDAO) {
+		int theId = 2;
+		Student tempStudent = appDAO.findStudentAndCourseByStudentId(theId);
+
+		// create more courses
+		Course tempCourse1 = new Course("Python Programming from Beginners to Advanced");
+		Course tempCourse2 = new Course("Java Framework - Spring SpringBoot Hibernate");
+
+		// add courses to student
+		tempStudent.addCourse(tempCourse1);
+		tempStudent.addCourse(tempCourse2);
+
+		System.out.println("Updating Student: " + tempStudent);
+		System.out.println("Associated Courses: " + tempStudent.getCourses());
+
+		appDAO.update(tempStudent);
+		System.out.println("DONE!");
 	}
 
 	private void findStudentAndCourses(AppDAO appDAO) {
