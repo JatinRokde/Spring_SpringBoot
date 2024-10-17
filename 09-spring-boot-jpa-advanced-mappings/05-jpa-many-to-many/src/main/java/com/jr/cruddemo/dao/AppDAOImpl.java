@@ -5,6 +5,7 @@ import com.jr.cruddemo.entity.Instructor;
 import com.jr.cruddemo.entity.InstructorDetail;
 import com.jr.cruddemo.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -169,5 +170,15 @@ public class AppDAOImpl implements AppDAO {
     @Transactional
     public void update(Student tempStudent) {
         entityManager.merge(tempStudent);
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudentById(int theId) {
+        // retrieve the student
+        Student tempStudent = entityManager.find(Student.class, theId);
+
+        // delete the student
+        entityManager.remove(tempStudent);
     }
 }
