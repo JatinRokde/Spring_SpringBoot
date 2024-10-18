@@ -1,5 +1,7 @@
 package com.jr.aopdemo.dao;
 
+import com.jr.aopdemo.Account;
+
 public interface AccountDAO {
-    boolean addAccount();
+    void addAccount(Account theAccount);
 }
