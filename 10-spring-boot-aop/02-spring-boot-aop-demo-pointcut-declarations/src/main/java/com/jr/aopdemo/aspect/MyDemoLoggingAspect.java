@@ -26,6 +26,23 @@ public class MyDemoLoggingAspect {
 
         // printout the results of the method call
         System.out.println("\n=====>>>>> Result is: " + result);
+        
+        // post-processing/modifying the data
+        // convert the account names to uppercase
+        convertAccountNamesToUpperCase(result);
+
+        System.out.println("\n=====>>>>> Result is: " + result);
+    }
+
+    private void convertAccountNamesToUpperCase(List<Account> result) {
+        // loop through accounts
+        for(Account tempAccount : result) {
+            // get uppercase version of name
+            String theUpperName = tempAccount.getName().toUpperCase();
+
+            // update the name on the account
+            tempAccount.setName(theUpperName);
+        }
     }
 
 
